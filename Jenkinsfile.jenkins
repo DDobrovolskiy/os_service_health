@@ -1,0 +1,22 @@
+#!groovy
+// Check ub1 properties
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '3', artifactNumToKeepStr: '3'))
+        timestamps()
+    }
+    stages {
+        stage("First step") {
+            steps {
+                sh 'echo "First"'
+            }
+        }
+        stage("Second step") {
+            steps {
+                sh 'echo "Second step"'
+            }
+        }
+    }
+}
